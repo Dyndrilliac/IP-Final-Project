@@ -1,47 +1,81 @@
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+const BASE_URL = "proxy/api/v2/"
+const URLS = {
+    ENDPOINTS:              BASE_URL,
+    DAYSOFWEEK:             BASE_URL + "daysofweek/",
+    EQUIPMENT:              BASE_URL + "equipment/",
+    EXERCISE:               BASE_URL + "exercise/",
+    EXERCISEINFO:           BASE_URL + "exerciseinfo/",
+    EXERCISECATEGORY:       BASE_URL + "exercisecategory/",
+    EXERCISECOMMENT:        BASE_URL + "exercisecomment/",
+    EXERCISEIMAGE:          BASE_URL + "exerciseimage/",
+    INGREDIENT:             BASE_URL + "ingredient/",
+    INGREDIENTWEIGHTUNIT:   BASE_URL + "ingredientweightunit/",
+    LANGUAGE:               BASE_URL + "language/",
+    LICENSE:                BASE_URL + "license/",
+    MUSCLE:                 BASE_URL + "muscle/",
+    WEIGHTUNIT:             BASE_URL + "weightunit/",
+    SETTING_REPETITIONUNIT: BASE_URL + "setting-repetitionunit/",
+    SETTING_WEIGHTUNIT:     BASE_URL + "setting-weightunit/",
+};
+
+var endpoints;
+var daysofweek;
+var equipment;
+var exercise;
+var exerciseinfo;
+var exercisecategory;
+var exercisecomment;
+var exerciseimage;
+var ingredient;
+var ingredientweightunit;
+var language;
+var license;
+var muscle;
+var weightunit;
+var setting_repetitionunit;
+var setting_weightunit;
+
+function getMuscles() {
+    $.ajax({
+            url: URLS.MUSCLE + "?format=json&limit=999",
+            dataType: "json",
+            success: (data) => {
+                displayMuscleGroups(data);
+                muscle = data;
+            }
+    });
 }
 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+function displayMuscleGroups(muscles) {
+    $("#muscles").html("<form id=\"muscles-form\"></form>");
+
+    for (var i = 0; i < muscles.count; i++) {
+        var muscleString = "<div class=\"checkbox\"><label><input type=\"checkbox\">" + String(muscles.results[i].name) + "</label></div>";
+        $("#muscles-form").append(muscleString);
+    }
 }
 
-// Slideshow Apartment Images
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
+function getExercises() {
+    $.ajax({
+            url: URLS.EXERCISE + "?format=json&limit=999",
+            dataType: "json",
+            success: (data) => {
+                displayExercises(data);
+                exercise = data;
+            }
+    });
 }
 
-function currentDiv(n) {
-  showDivs(slideIndex = n);
+function displayExercises(exercises) {
+    $("#exercises").html("<ol id=\"exercises-list\"></ol>");
+
+    for (var i = 0; i < exercises.count; i++) {
+        var exerciseString = "<div class=\"checkbox\"><label><input type=\"checkbox\">" + String(exercises.results[i].name) + "</label></div>";
+        $("#exercises-list").append(exerciseString);
+    }
 }
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-
-  if (n > x.length) {
-    slideIndex = 1;
-
-  }
-
-  if (n < 1) {
-    slideIndex = x.length;
-  }
-
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-  }
-
-  x[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " w3-opacity-off";
-}
+$(document).ready((e) => {
+    getMuscles();
+	getExercises();
+});
