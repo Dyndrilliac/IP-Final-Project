@@ -77,5 +77,5 @@ function displayExercises(exercises) {
 
 $(document).ready((e) => {
     getMuscles();
-	getExercises();
+	$("#search-button").click(getExercises);
 });
