@@ -7,7 +7,7 @@
 
 ## Description
 
-Workout Manager is a simple web application that allows the user to choose a muscle group and then see lists of exercises that works those muscles.
+Workout Manager is a simple web application that allows the user to choose a group of muscles and then see a list of exercises that work those muscles.
 
 *******************************************************************
 
@@ -45,6 +45,7 @@ Current directory:
 New directory:
 
 * **git clone https://github.com/Dyndrilliac/IP-Final-Project.git**
+* **git clone https://github.com/Dyndrilliac/IP-Final-Project.git *_DirectoryName_***
 
 *******************************************************************
 
