@@ -1,6 +1,7 @@
 *******************************************************************
 
-# [COP 4813 Internet Programming Final Project: Workout Manager](https://github.com/Dyndrilliac/IP-Final-Project)
+# [COP 4813 Internet Programming Final Project](https://github.com/Dyndrilliac/IP-Final-Project)
+## Workout Manager
 
 *******************************************************************
 
