@@ -59,11 +59,11 @@ New directory:
 
 ### Start the Server
 
-* **npm start** (or **node ./bin/www.start**)
+* **npm start** (or **node ./bin/wwwstart**)
 * **Navigate to [http://localhost/](http://localhost/) to access.**
 
 ### Stop the Server
 
-* **npm stop** (or **node ./bin/www.start**)
+* **npm stop** (or **node ./bin/wwwstop**)
 
 *******************************************************************
