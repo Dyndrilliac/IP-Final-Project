@@ -45,7 +45,7 @@ Current directory:
 New directory:
 
 * **git clone https://github.com/Dyndrilliac/IP-Final-Project.git**
-* **git clone https://github.com/Dyndrilliac/IP-Final-Project.git *_DirectoryName_***
+* **git clone https://github.com/Dyndrilliac/IP-Final-Project.git _DirectoryName_**
 
 *******************************************************************
 
